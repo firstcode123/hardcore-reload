@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>硬汉重回计划 · 完整计划书</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#14161A; --ink2:#4C545F; --ink3:#858D99;
+  --line:#E4E6EA; --line2:#F2F3F5;
+  --red:#C8102E; --red2:#FDECEF; --red3:#8E0B20;
+  --green:#12855A; --amber:#B06A00;
+  --paper:#FFFFFF; --bg:#EFF0F2;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  background:var(--bg); color:var(--ink); font-size:14.5px; line-height:1.7;
+  -webkit-font-smoothing:antialiased; padding:28px 16px 60px;
+}
+.book{max-width:820px;margin:0 auto}
+.sheet{background:var(--paper);border-radius:14px;padding:44px 48px;margin-bottom:20px;box-shadow:0 1px 3px rgba(20,22,26,.07)}
+
+.cover{text-align:center;padding:64px 48px}
+.cover .kicker{font-size:11px;letter-spacing:5px;color:var(--red);font-weight:700}
+.cover h1{font-size:38px;font-weight:800;letter-spacing:-1.5px;margin:16px 0 10px;line-height:1.15}
+.cover .sub{font-size:15px;color:var(--ink2);line-height:1.8}
+.cover .rule{width:52px;height:3px;background:var(--red);margin:26px auto;border-radius:2px}
+.cover .meta{font-size:12.5px;color:var(--ink3);margin-top:30px;line-height:1.9}
+
+h2{font-size:20px;font-weight:700;letter-spacing:-.3px;margin:0 0 6px;display:flex;align-items:baseline;gap:10px}
+h2 .no{font-size:12px;font-weight:700;color:var(--red);letter-spacing:1px;font-variant-numeric:tabular-nums}
+h3{font-size:16px;font-weight:700;margin:26px 0 8px}
+h3:first-child{margin-top:0}
+h4{font-size:14px;font-weight:700;color:var(--ink2);margin:16px 0 6px}
+.lead{font-size:13.5px;color:var(--ink3);margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+p{margin-bottom:10px}
+b,strong{font-weight:700}
+
+.phase{border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+.phase-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.phase-num{width:30px;height:30px;border-radius:9px;background:var(--ink);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none}
+.phase-t{font-size:16.5px;font-weight:700}
+.phase-r{font-size:12px;color:var(--ink3);margin-left:auto;flex:none;font-variant-numeric:tabular-nums}
+.phase-goal{font-size:14px;color:var(--ink2);margin-bottom:12px;padding-left:14px;border-left:2px solid var(--red)}
+ul{list-style:none;margin:8px 0}
+ul li{position:relative;padding-left:18px;margin-bottom:5px;font-size:14px}
+ul li:before{content:"";position:absolute;left:3px;top:9px;width:5px;height:5px;border-radius:50%;background:var(--red)}
+ul.plain li:before{background:var(--ink3)}
+
+.note{background:#FFFBF2;border-left:3px solid #E0A83C;border-radius:0 8px 8px 0;padding:11px 15px;font-size:13px;color:#7A5000;margin-top:12px;line-height:1.65}
+.danger{background:#FEF5F6;border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:11px 15px;font-size:13px;color:#8E0B20;margin-top:12px;line-height:1.65}
+.tip{background:#F1F7FD;border-left:3px solid #3A7BC8;border-radius:0 8px 8px 0;padding:11px 15px;font-size:13px;color:#1E4E80;margin-top:12px;line-height:1.65}
+
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px}
+th{text-align:left;font-weight:700;font-size:12px;color:var(--ink3);letter-spacing:.4px;padding:8px 10px;border-bottom:1.5px solid var(--line);vertical-align:bottom}
+td{padding:9px 10px;border-bottom:1px solid var(--line2);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.c,th.c{text-align:center}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:#FAFBFC}
+.rest{color:var(--ink3)}
+
+.scorebar{display:flex;height:9px;border-radius:5px;overflow:hidden;margin:14px 0 8px;background:var(--line2)}
+.scorebar span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink3)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle}
+
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.ladder div{border:1px solid var(--line);border-radius:10px;padding:12px 10px;text-align:center}
+.ladder b{display:block;font-size:17px;font-weight:800;font-variant-numeric:tabular-nums}
+.ladder span{font-size:11.5px;color:var(--ink3)}
+
+.exgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.exitem{border:1px solid var(--line);border-radius:10px;padding:13px 15px;background:#FCFCFD}
+.exitem .k{font-size:13.5px;font-weight:700;margin-bottom:6px}
+.exitem .v{font-size:12.5px;color:var(--ink2);line-height:1.65}
+
+.rules{counter-reset:r}
+.rules>div{counter-increment:r;position:relative;padding:0 0 14px 36px;margin-bottom:14px;border-bottom:1px solid var(--line2)}
+.rules>div:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.rules>div:before{content:counter(r);position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:7px;background:var(--red2);color:var(--red3);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.rules .rt{font-size:14.5px;font-weight:700;margin-bottom:4px}
+.rules .rb{font-size:13.5px;color:var(--ink2)}
+
+.mile td{height:34px}
+.mile td.n{color:var(--ink3)}
+.sign{display:flex;justify-content:space-between;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--ink3)}
+
+.toc{display:grid;grid-template-columns:1fr 1fr;gap:4px 24px;font-size:13.5px}
+.toc div{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--line2)}
+.toc span:first-child{color:var(--red);font-weight:700;font-variant-numeric:tabular-nums;flex:none}
+
+@media print{
+  @page{size:A4;margin:14mm 12mm}
+  body{background:#fff;padding:0;font-size:10.5pt}
+  .book{max-width:none}
+  .sheet{box-shadow:none;border-radius:0;padding:0;margin:0 0 10mm;break-inside:auto}
+  .sheet+.sheet{break-before:page}
+  .cover{padding:60mm 0 0;break-after:page}
+  .phase,.exitem,.rules>div,table,.ladder{break-inside:avoid}
+  .note,.danger,.tip{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  .noprint{display:none}
+}
+@media(max-width:640px){
+  body{padding:14px 10px 40px}
+  .sheet{padding:26px 20px;border-radius:10px}
+  .cover{padding:40px 20px}
+  .cover h1{font-size:27px}
+  .exgrid,.toc{grid-template-columns:1fr}
+  .ladder{grid-template-columns:1fr 1fr}
+  table{font-size:12.5px}
+  th,td{padding:7px 6px}
+}
+.printbtn{position:fixed;right:20px;bottom:20px;background:var(--red);color:#fff;border:none;font-family:inherit;font-size:14px;font-weight:700;padding:13px 22px;border-radius:26px;box-shadow:0 4px 16px rgba(200,16,46,.3);cursor:pointer;z-index:50}
+.printbtn:active{transform:scale(.96)}
+</style>
+</head>
+<body>
+<div class="book">
+
+<!-- 封面 -->
+<section class="sheet cover">
+  <div class="kicker">HARDCORE RELOAD</div>
+  <h1>硬汉重回计划</h1>
+  <div class="rule"></div>
+  <div class="sub">30 岁不是下坡的起点，是欠账集中到期的节点。<br>这份计划不追求「猛」，只追求「不断」。</div>
+  <div class="meta">
+    训练周期：12 周强化 + 长期维持<br>
+    每日投入：20–40 分钟<br>
+    适用场景：久坐办公人群 · 居家与健身房双路径
+  </div>
+</section>
+
+<!-- 目录 -->
+<section class="sheet">
+  <h2><span class="no">目录</span></h2>
+  <div class="lead">七个部分，从认识问题到长期维持。</div>
+  <div class="toc">
+    <div><span>01</span><span>判断与总纲</span></div>
+    <div><span>02</span><span>四阶段路线图</span></div>
+    <div><span>03</span><span>每周训练模板</span></div>
+    <div><span>04</span><span>每日打卡与计分</span></div>
+    <div><span>05</span><span>动作库</span></div>
+    <div><span>06</span><span>七条铁律</span></div>
+    <div><span>07</span><span>安全边界与里程碑</span></div>
+  </div>
+</section>
+
+<!-- 01 -->
+<section class="sheet">
+  <h2><span class="no">01</span>判断与总纲</h2>
+  <div class="lead">先认清问题，再谈方案。</div>
+
+  <h3>30 岁真正变化的是什么</h3>
+  <p>不是力量上限，是<b>恢复速度</b>。同样一次高强度训练，22 岁第二天活蹦乱跳，30 岁可能要酸三天。这意味着：靠「拼」的路线在这个年龄开始失效，靠「节奏」的路线才能走远。</p>
+  <p>同时到期的是这些年的欠账：长期熬夜、每天久坐 10 小时以上、外卖为主的高糖高油饮食、完全没有力量刺激。这些账单不会立刻致命，但会以「白天犯困、注意力涣散、腰酸颈僵、体重缓慢爬升」的形式持续扣分。</p>
+
+  <h3>好消息</h3>
+  <p>30 岁的身体回弹速度依然很快。<b>8 周能感到体感变化，12 周体型会有肉眼可见的差别。</b>这个年龄段的训练收益几乎是投入产出比最高的人生阶段——因为你既有恢复能力，又有执行纪律。</p>
+
+  <h3>总纲：顺序不能反</h3>
+  <div class="note">
+    <b>先修复底层——睡眠、饮食、日常活动量；再叠加训练强度。</b><br>
+    跳过底层直接上强度，结果一定是练两周、累垮、放弃。绝大多数健身计划失败不是因为强度不够，而是因为顺序错了。
+  </div>
+
+  <h3>三条不可动摇的底线</h3>
+  <ul>
+    <li><b>睡眠</b>：23:30 前上床，睡够 7 小时。这是所有训练效果的乘数，睡不够，练了也白练。</li>
+    <li><b>不断档</b>：宁可降低标准，绝不断掉打卡。5 分钟的最小版本也比归零强。</li>
+    <li><b>不吃亏在恢复</b>：每周至少 1 天完全休息。肌肉是在休息时长出来的。</li>
+  </ul>
+</section>
+
+<!-- 02 -->
+<section class="sheet">
+  <h2><span class="no">02</span>四阶段路线图</h2>
+  <div class="lead">强度逐级上升，每个阶段只解决一个主要矛盾。</div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <div class="phase-num">1</div>
+      <div class="phase-t">地基期 · 重置作息</div>
+      <div class="phase-r">第 1–2 周</div>
+    </div>
+    <div class="phase-goal">目标不是变强，是让身体重新记住「有节奏」这件事。这两周做对了，后面会突然变轻松。</div>
+    <ul>
+      <li>固定<b>起床时间</b>，比固定入睡时间更重要。周末与工作日相差不超过 1 小时。</li>
+      <li>每天 20 分钟户外快走，顺便晒太阳，帮助重建昼夜节律。</li>
+      <li>力量训练只做 3 个动作，先把动作模式做对，重量和次数都不重要。</li>
+      <li>睡前 1 小时手机放客厅，只留纸质书。</li>
+      <li>不设体重目标，不上强度，不测极限。</li>
+    </ul>
+    <div class="danger">最常见的失败：第一周就上强度，第二周累垮或受伤，第三周彻底放弃。这两周「练得不够」是设计，不是缺陷。</div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <div class="phase-num">2</div>
+      <div class="phase-t">唤醒期 · 建立节律</div>
+      <div class="phase-r">第 3–6 周</div>
+    </div>
+    <div class="phase-goal">开始规律的力量训练，把心肺基础打起来，同时解决久坐带来的颈肩腰问题。</div>
+    <ul>
+      <li>力量每周 3 次，推 / 拉 / 腿各安排一次，每次 35 分钟。</li>
+      <li>有氧每周 2–3 次，强度以<b>「能说话但唱不了歌」</b>为准。</li>
+      <li>颈肩腰专项每周 3 次，每次 5 分钟，专门对付久坐。</li>
+      <li>第 6 周做一次基线测试：俯卧撑、平板支撑、深蹲、体重、腰围、静息心率。</li>
+      <li>开始记录每次训练的动作和次数，为下一阶段的「加量」提供依据。</li>
+    </ul>
+    <div class="note">体重可能不降甚至微涨——这是肌肉和水分的正常反应。这个阶段请用腰围和精力状态判断进展，别用体重秤。</div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <div class="phase-num">3</div>
+      <div class="phase-t">强化期 · 强度爬坡</div>
+      <div class="phase-r">第 7–12 周</div>
+    </div>
+    <div class="phase-goal">渐进超负荷。这 6 周是体型和精力变化最明显的阶段，前提是睡眠没有崩。</div>
+    <ul>
+      <li>力量每周 4 次，<b>每 2 周增加一次次数或重量</b>，这是肌肉生长的唯一驱动力。</li>
+      <li>有氧加入间歇训练，提升心肺上限：快 1 分钟 / 慢 2 分钟 × 5 组。</li>
+      <li>加大核心与单腿训练比重，保护腰和膝。</li>
+      <li>第 12 周复测全部指标，与第 6 周对比，看清这 6 周到底练出了什么。</li>
+    </ul>
+    <div class="danger">这个阶段最容易过训。如果连续两天晨起静息心率比平时高 5 次以上，主动休息一天——这是身体在报警，不是意志力问题。</div>
+  </div>
+
+  <div class="phase">
+    <div class="phase-head">
+      <div class="phase-num">4</div>
+      <div class="phase-t">稳固期 · 长期维持</div>
+      <div class="phase-r">第 13 周起</div>
+    </div>
+    <div class="phase-goal">把硬汉状态变成默认值。不需要更多意志力，只需要不退回去。</div>
+    <ul>
+      <li>每周 3 次力量 + 每周累计 150 分钟中等强度有氧。</li>
+      <li>每季度复测一次身体指标，看长期趋势。</li>
+      <li>保持睡眠与饮食两条底线不破，这两条破了一切归零。</li>
+      <li>每年做一次体检，重点看血脂、血糖、肝功、尿酸。</li>
+    </ul>
+    <div class="note">维持期的敌人是「忙」。忙的时候降低标准，但绝对不要归零——20 分钟也算完成，这也是为什么打卡系统里「完成训练」有 25 分权重。</div>
+  </div>
+</section>
+
+<!-- 03 -->
+<section class="sheet">
+  <h2><span class="no">03</span>每周训练模板</h2>
+  <div class="lead">按星期查表，不需要临场决定练什么。</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:56px">星期</th>
+        <th>地基期（1–2 周）</th>
+        <th>唤醒期（3–6 周）</th>
+        <th>强化期（7–12 周）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="n"><b>周一</b></td><td>全身力量 A · 30 分钟</td><td>上肢推 + 核心 · 35 分钟</td><td>力量 · 推 · 40 分钟（渐进加重）</td></tr>
+      <tr><td class="n"><b>周二</b></td><td>快走 / 慢跑 25 分钟</td><td>中等强度有氧 30 分钟</td><td>有氧间歇 20 分钟 + 颈肩专项</td></tr>
+      <tr><td class="n"><b>周三</b></td><td>全身力量 B · 30 分钟</td><td>下肢 + 臀腿 · 35 分钟</td><td>力量 · 拉 · 40 分钟</td></tr>
+      <tr><td class="n"><b>周四</b></td><td>有氧 20 分钟 + 颈肩腰拉伸</td><td>有氧间歇 15 分钟</td><td>稳态有氧 35 分钟</td></tr>
+      <tr><td class="n"><b>周五</b></td><td>全身力量 C · 30 分钟</td><td>上肢拉 + 核心 · 35 分钟</td><td>力量 · 腿 · 40 分钟</td></tr>
+      <tr><td class="n"><b>周六</b></td><td>户外长走 40–60 分钟</td><td>户外有氧 45–60 分钟</td><td>户外长有氧 60 分钟</td></tr>
+      <tr><td class="n rest"><b>周日</b></td><td class="rest">完全休息 · 散步 20 分钟</td><td class="rest">主动恢复 · 散步 + 拉伸 15 分钟</td><td class="rest">完全休息</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <b>最小可执行版本（出差 / 加班 / 状态差时用）：</b>20 个俯卧撑 + 30 个深蹲 + 1 分钟平板支撑，5 分钟完成。<br>
+    这不是「凑合」，是<b>刻意设计的降级方案</b>——保住连续性比保住强度重要得多。
+  </div>
+
+  <h4>强度控制：怎么判断够不够</h4>
+  <ul class="plain">
+    <li><b>有氧强度</b>：能完整说出一句话，但唱不了歌。心率大约在最大心率的 65–75%（最大心率 ≈ 220 − 年龄）。</li>
+    <li><b>力量强度</b>：最后 2 次感觉很吃力，但动作不变形。动作变形说明重量或次数超了。</li>
+    <li><b>间歇强度</b>：快的那 1 分钟结束时应该喘到说不出完整句子。</li>
+    <li><b>恢复判断</b>：晨起静息心率连续两天高于平时 5 次以上 = 该休息了。</li>
+  </ul>
+</section>
+
+<!-- 04 -->
+<section class="sheet">
+  <h2><span class="no">04</span>每日打卡与计分</h2>
+  <div class="lead">八项加权合成 0–100「硬汉指数」，75 分为达标线。</div>
+
+  <table>
+    <thead>
+      <tr><th style="width:44px" class="c">图标</th><th style="width:150px">项目</th><th>达标标准</th><th style="width:60px" class="c">权重</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="c">🏋️</td><td><b>完成训练</b></td><td>按当日任务完成力量或有氧</td><td class="c n"><b>25</b></td></tr>
+      <tr><td class="c">🌙</td><td><b>睡眠达标</b></td><td>23:30 前睡，睡够 7 小时</td><td class="c n"><b>20</b></td></tr>
+      <tr><td class="c">🥩</td><td><b>饮食达标</b></td><td>每餐一掌心蛋白 + 蔬菜 + 无糖饮</td><td class="c n"><b>12</b></td></tr>
+      <tr><td class="c">🚶</td><td><b>步数 8000+</b></td><td>通勤、饭后散步都算</td><td class="c n"><b>10</b></td></tr>
+      <tr><td class="c">📵</td><td><b>睡前 1 小时离屏</b></td><td>手机放客厅，只留纸质书</td><td class="c n"><b>10</b></td></tr>
+      <tr><td class="c">💧</td><td><b>饮水 2000ml</b></td><td>别等渴了才喝</td><td class="c n"><b>8</b></td></tr>
+      <tr><td class="c">⏱️</td><td><b>久坐打断 4 次</b></td><td>每小时起身活动 2 分钟</td><td class="c n"><b>8</b></td></tr>
+      <tr><td class="c">🧘</td><td><b>颈肩腰放松 5 分钟</b></td><td>颈肩拉伸 + 髋腰伸展</td><td class="c n"><b>7</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="scorebar">
+    <span style="width:25%;background:#C8102E"></span>
+    <span style="width:20%;background:#D9435C"></span>
+    <span style="width:12%;background:#E8768A"></span>
+    <span style="width:10%;background:#3A7BC8"></span>
+    <span style="width:10%;background:#5B95D6"></span>
+    <span style="width:8%;background:#12855A"></span>
+    <span style="width:8%;background:#3FA57A"></span>
+    <span style="width:7%;background:#E0A83C"></span>
+  </div>
+  <div class="legend">
+    <span><i style="background:#C8102E"></i>训练 25</span>
+    <span><i style="background:#D9435C"></i>睡眠 20</span>
+    <span><i style="background:#E8768A"></i>饮食 12</span>
+    <span><i style="background:#3A7BC8"></i>步数 10</span>
+    <span><i style="background:#5B95D6"></i>离屏 10</span>
+    <span><i style="background:#12855A"></i>饮水 8</span>
+    <span><i style="background:#3FA57A"></i>久坐 8</span>
+    <span><i style="background:#E0A83C"></i>拉伸 7</span>
+  </div>
+
+  <h3>关键规则：数值项按比例给分</h3>
+  <p>睡眠、饮水、步数、久坐中断这四项是数值型，<b>按达成比例给分，不是全有全无</b>。睡了 5 小时不是 0 分，是 20 × 5/7 ≈ 14 分。</p>
+  <div class="tip">
+    为什么这样设计？全有全无的计分方式会让人在「今天注定做不满分」的时候直接放弃整天。按比例给分保证任何一点努力都被记录，这是长期坚持的关键。
+  </div>
+
+  <h3>等级划分</h3>
+  <div class="ladder">
+    <div><b style="color:#C8102E">90+</b><span>硬汉状态</span></div>
+    <div><b style="color:#12855A">75+</b><span>状态在线</span></div>
+    <div><b style="color:#B06A00">60+</b><span>及格边缘</span></div>
+    <div><b>60−</b><span>今天掉线了</span></div>
+  </div>
+
+  <h3>每周身体测量</h3>
+  <p>每 2 周测一次就够，<b>固定在同一时间、同样条件下测</b>（建议周一早晨空腹、如厕后）。单日体重波动 1–2kg 属于正常的水分变化，没有参考价值。</p>
+  <table>
+    <thead><tr><th>指标</th><th>测量方法</th><th>看什么</th></tr></thead>
+    <tbody>
+      <tr><td class="n">体重</td><td>晨起空腹、如厕后</td><td>4 周趋势线，不看单点</td></tr>
+      <tr><td class="n">腰围</td><td>肚脐水平，正常呼气末</td><td>比体重更能反映内脏脂肪</td></tr>
+      <tr><td class="n">静息心率</td><td>晨起未下床时</td><td>持续下降 = 心肺改善；突然升高 = 该休息了</td></tr>
+      <tr><td class="n">连续俯卧撑</td><td>标准姿势，到动作变形为止</td><td>上肢力量与耐力的综合指标</td></tr>
+      <tr><td class="n">平板支撑</td><td>腰部不下塌，到姿势破坏为止</td><td>核心稳定性</td></tr>
+      <tr><td class="n">连续深蹲</td><td>大腿与地面平行，到动作变形为止</td><td>下肢力量与耐力</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 05 -->
+<section class="sheet">
+  <h2><span class="no">05</span>动作库</h2>
+  <div class="lead">居家与健身房双路径，按可用条件选一列执行即可。</div>
+
+  <div class="exgrid">
+    <div class="exitem">
+      <div class="k">推（胸 / 肩 / 三头）</div>
+      <div class="v"><b>居家：</b>俯卧撑（可跪姿）· 上斜俯卧撑 · 椅背臂屈伸 · 靠墙倒立撑<br><b>健身房：</b>哑铃卧推 · 哑铃肩推 · 器械推胸 · 绳索下压</div>
+    </div>
+    <div class="exitem">
+      <div class="k">拉（背 / 二头）</div>
+      <div class="v"><b>居家：</b>弹力带划船 · 门框划船 · 弹力带面拉 · 单臂划船（用水瓶）<br><b>健身房：</b>引体向上 / 高位下拉 · 坐姿划船 · 哑铃单臂划船 · 哑铃弯举</div>
+    </div>
+    <div class="exitem">
+      <div class="k">腿 / 臀</div>
+      <div class="v"><b>居家：</b>徒手深蹲 · 保加利亚分腿蹲 · 臀桥 · 单腿臀桥 · 提踵<br><b>健身房：</b>高脚杯深蹲 · 杠铃深蹲 · 罗马尼亚硬拉 · 腿举 · 臀推</div>
+    </div>
+    <div class="exitem">
+      <div class="k">核心</div>
+      <div class="v">平板支撑 · 死虫 · 鸟狗 · 侧平板 · 悬垂举腿 · 卷腹<br><span style="color:#8E0B20">腰痛人群优先死虫 / 鸟狗 / 臀桥，避免仰卧起坐和负重弯腰。</span></div>
+    </div>
+    <div class="exitem">
+      <div class="k">颈肩（办公室专项）</div>
+      <div class="v">下巴回收（缩下巴保持 5 秒）· 靠墙天使 · YTWL · 胸椎旋转 · 门框扩胸<br>每天 5 分钟，比一次练 30 分钟更有效。</div>
+    </div>
+    <div class="exitem">
+      <div class="k">有氧</div>
+      <div class="v"><b>稳态：</b>快走 / 慢跑 / 骑车 / 游泳，「能说话但唱不了歌」的强度<br><b>间歇：</b>快 1 分钟 / 慢 2 分钟 × 5 组，适合时间紧的时候</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <b>训练频率的真相：</b>一周练 3 次能坚持半年，胜过一周练 6 次坚持两周。这份计划里所有安排都按「能长期执行」而不是「单次收益最大化」来设计。
+  </div>
+</section>
+
+<!-- 06 -->
+<section class="sheet">
+  <h2><span class="no">06</span>七条铁律</h2>
+  <div class="lead">这七条覆盖了 90% 的执行问题，卡住的时候回来看。</div>
+
+  <div class="rules">
+    <div>
+      <div class="rt">睡眠是一切的地基</div>
+      <div class="rb">23:30 前上床，目标 7–7.5 小时。卧室不放手机；午休控制在 20 分钟以内；周末起床时间与工作日相差不超过 1 小时。睡不够的情况下，训练强度自动降一档——这是纪律，不是偷懒。</div>
+    </div>
+    <div>
+      <div class="rt">饮食不减量，先换质</div>
+      <div class="rb">每餐保证一掌心大小的蛋白质（鸡蛋 / 鸡胸 / 牛肉 / 鱼 / 豆制品）；主食一半换成粗粮；每天 500g 蔬菜；戒掉含糖饮料；晚餐七分饱。酒精每周不超过 2 次——酒精会直接压制深度睡眠和睾酮水平，这是它比热量更严重的问题。</div>
+    </div>
+    <div>
+      <div class="rt">训练宁少勿断</div>
+      <div class="rb">出差、加班时用最小可执行版本：20 个俯卧撑 + 30 个深蹲 + 1 分钟平板，5 分钟完成，也算打卡。降级不是失败，归零才是。</div>
+    </div>
+    <div>
+      <div class="rt">久坐每小时站起来</div>
+      <div class="rb">连续坐 90 分钟以上，代谢和腰椎都在吃亏。设个每小时响一次的闹钟，起身活动 2 分钟。这是全部建议里投入产出比最高的一条，对每天坐 10 小时的开发者尤其如此。</div>
+    </div>
+    <div>
+      <div class="rt">每天留 10 分钟无输入</div>
+      <div class="rb">不刷手机、不听课、不听播客，就是散步或闭眼呼吸。30 岁以后的精神疲劳，大多来自「持续输入、从不消化」。另外每天记录 1 件完成的事，给大脑一个明确的正反馈锚点。</div>
+    </div>
+    <div>
+      <div class="rt">恢复要主动安排，不能靠感觉</div>
+      <div class="rb">每周至少 1 天完全休息。肌肉是在休息时长的，不是在训练时长。感觉「还行」不等于「恢复了」——用静息心率判断，比用感觉判断可靠得多。</div>
+    </div>
+    <div>
+      <div class="rt">衡量看趋势，别看单点</div>
+      <div class="rb">单日体重波动 1–2kg 是正常的。每周同一时间、同样条件测一次，看 4 周趋势线。腰围比体重更能反映内脏脂肪的变化，也更能反映你的实际进展。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 -->
+<section class="sheet">
+  <h2><span class="no">07</span>安全边界与里程碑</h2>
+  <div class="lead">知道什么时候该停下来，比知道怎么练更重要。</div>
+
+  <h3>立刻停止训练并就医的信号</h3>
+  <div class="danger">
+    胸闷胸痛 · 头晕黑视 · 关节尖锐疼痛（区别于肌肉酸胀）· 静息心率异常升高 · 夜间心悸
+  </div>
+  <ul style="margin-top:14px">
+    <li>任何动作出现「刺痛 / 卡顿 / 弹响伴随疼痛」，换动作而不是硬扛。</li>
+    <li>腰部不适时，避免仰卧起坐和负重弯腰，改做死虫、臀桥、鸟狗。</li>
+    <li>连续 3 天睡眠不足 6 小时，主动把训练降一档，不要硬练。</li>
+    <li>感冒发热期间停训；恢复后从上一阶段的一半量重新开始，不要接续。</li>
+    <li>本计划是通用健康方案，不替代医生诊断。有基础疾病请先咨询医生。</li>
+  </ul>
+
+  <h3>12 周里程碑自测表</h3>
+  <p>打印出来贴在墙上，到点就填。填写时保持同样的测量条件，否则数据没有可比性。</p>
+  <table class="mile">
+    <thead>
+      <tr>
+        <th style="width:70px">时间点</th>
+        <th class="c">体重 kg</th>
+        <th class="c">腰围 cm</th>
+        <th class="c">静息心率</th>
+        <th class="c">俯卧撑</th>
+        <th class="c">平板 秒</th>
+        <th class="c">深蹲</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="n"><b>第 1 周</b></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="n"><b>第 6 周</b></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="n"><b>第 12 周</b></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="n"><b>第 24 周</b></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <h3>三个月后你应该感受到的变化</h3>
+  <ul>
+    <li>早晨自然醒的时间提前，起床不再需要反复挣扎。</li>
+    <li>下午 3 点不再出现明显的困倦塌陷。</li>
+    <li>爬楼梯、走长路不再气喘，静息心率下降 3–8 次。</li>
+    <li>腰围下降 3–6cm（即使体重变化不大）。</li>
+    <li>颈肩僵硬感明显减轻，久坐后不再需要长时间揉脖子。</li>
+    <li>最关键的：训练从「需要下决心」变成「到点就做」。</li>
+  </ul>
+
+  <div class="sign">
+    <span>硬汉重回计划 · 完整计划书</span>
+    <span>配套打卡系统：hardcore-reload</span>
+  </div>
+</section>
+
+</div>
+
+<button class="printbtn noprint" onclick="window.print()">打印 / 存为 PDF</button>
+</body>
+</html>
